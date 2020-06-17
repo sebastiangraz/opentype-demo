@@ -1,4 +1,3 @@
-window.addEventListener("DOMContentLoaded", (event) => {});
 var FontDragAndDrop = FontDragAndDrop || {};
 
 (function () {

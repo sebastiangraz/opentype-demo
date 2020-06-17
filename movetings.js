@@ -1,3 +1,5 @@
+// https://interactjs.io/
+
 var el = document.querySelector("#textbox");
 console.log(el);
 el.onmousedown = function (event) {
@@ -6,7 +8,7 @@ el.onmousedown = function (event) {
 
 	el.style.position = "absolute";
 	el.style.zIndex = 1000;
-	document.body.append(el);
+	document.querySelector("#canvas").append(el);
 
 	moveAt(event.pageX, event.pageY);
 
