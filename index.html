@@ -7,14 +7,29 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<section style="background: #eee; padding: 40px;">
-			Drag and drop fonts here
-			<div id="fonts">Fonts</div>
-			<div id="custom">
-				abcdefghijklmnopqrstuvwxyz.:;, ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890 @
-				&!?#$€%
-			</div>
-		</section>
+		<div class="grid">
+			<header>
+				Header
+			</header>
+
+			<aside class="sidebar-left">
+				Left Sidebar
+			</aside>
+
+			<article>
+				<div id="custom" contenteditable="true">
+					abcdefghijklmnopqrstuvwxyz.:;, ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890
+					@&!?#$€%
+				</div>
+			</article>
+
+			<aside class="sidebar-right">
+				<section style="background: #eee; padding: 40px;">
+					Drag and drop fonts here
+					<div id="fonts">Fonts</div>
+				</section>
+			</aside>
+		</div>
 	</body>
 	<script>
 		document.write(
