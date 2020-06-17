@@ -9,15 +9,20 @@
 	<body>
 		<div class="grid">
 			<header>
-				Header
+				<div class="button round">
+					<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12">
+						<path
+							d="M 1 0 L 11 0 C 11.552 0 12 0.448 12 1 C 12 1.552 11.552 2 11 2 L 1 2 C 0.448 2 0 1.552 0 1 C 0 0.448 0.448 0 1 0 Z M 1 5 L 11 5 C 11.552 5 12 5.448 12 6 C 12 6.552 11.552 7 11 7 L 1 7 C 0.448 7 0 6.552 0 6 C 0 5.448 0.448 5 1 5 Z M 1 10 L 11 10 C 11.552 10 12 10.448 12 11 C 12 11.552 11.552 12 11 12 L 1 12 C 0.448 12 0 11.552 0 11 C 0 10.448 0.448 10 1 10 Z"
+							fill="#fff"
+						></path>
+					</svg>
+				</div>
 			</header>
 
-			<aside class="sidebar-left">
-				Left Sidebar
-			</aside>
+			<aside class="sidebar-left"></aside>
 
-			<article>
-				<div id="custom" contenteditable="true">
+			<article id="canvas">
+				<div id="textbox" contenteditable="true">
 					abcdefghijklmnopqrstuvwxyz.:;, ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890
 					@&!?#$€%
 				</div>
@@ -40,4 +45,5 @@
 		);
 	</script>
 	<script src="main.js"></script>
+	<script src="movetings.js"></script>
 </html>

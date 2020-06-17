@@ -7,10 +7,18 @@ body {
 * {
 	box-sizing: border-box;
 }
-
+.button {
+	background: #282828;
+	height: 30px;
+	min-width: 30px;
+	border-radius: 999em;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
 .grid {
 	display: grid;
-	grid-template-columns: 320px auto 320px;
+	grid-template-columns: 260px auto 260px;
 	grid-template-rows: 60px auto;
 	grid-gap: 1px;
 	height: 100vh;
@@ -20,18 +28,41 @@ header,
 aside,
 footer {
 	background: #111;
-	padding: 1em;
 }
 
 header {
+	padding: 0 15px;
+	display: flex;
+	align-items: center;
 	grid-column: 1 / 4;
 }
 
 .sidebar-left {
 	grid-column: 1 / 2;
 }
-
-article {
+#textbox {
+	padding: 2px;
+	max-width: 250px;
+	position: relative;
+}
+#textbox:focus:after {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	content: "";
+	height: 10px;
+	border-radius: 999em;
+	transform: translate(5px, 5px);
+	width: 10px;
+	background: #fff;
+	box-shadow: 0 0 0 1px #09f;
+}
+#textbox:focus {
+	outline: none;
+	box-shadow: 0 0 0 1px #09f;
+}
+#canvas {
+	overflow: hidden;
 	grid-column: 2 / 3;
 }
 

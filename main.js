@@ -13,7 +13,7 @@ var FontDragAndDrop = FontDragAndDrop || {};
 	FontDragAndDrop.setup = function () {
 		dropListing = document.getElementById("fonts");
 		dropContainer = document.getElementsByTagName("section")[0];
-		displayContainer = document.getElementById("custom");
+		displayContainer = document.getElementById("textbox");
 		styleSheet = document.styleSheets[0];
 
 		dropListing.addEventListener(
@@ -60,7 +60,6 @@ var FontDragAndDrop = FontDragAndDrop || {};
 				droppedFileSize = Math.round(file.size / 1024) + "kb";
 
 				// Custom Addition by Andras Larsen
-				document.title = droppedFileName;
 
 				FontDragAndDrop.processData(file, droppedFileName, droppedFileSize);
 			} else {
