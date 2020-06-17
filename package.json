@@ -1,0 +1,11 @@
+{
+	"name": "opentype",
+	"description": "opentype demo",
+	"version": "1.0.0",
+	"scripts": {
+		"start": "concurrently --kill-others \"http-server .\" \"livereload .\""
+	},
+	"devDependencies": {
+		"concurrently": "^5.2.0"
+	}
+}
