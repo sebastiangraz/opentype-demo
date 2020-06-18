@@ -12,7 +12,7 @@ var FontDragAndDrop = FontDragAndDrop || {};
 	FontDragAndDrop.setup = function () {
 		dropListing = document.getElementById("fonts");
 		dropContainer = document.getElementsByTagName("section")[0];
-		displayContainer = document.getElementById("textbox");
+		displayContainer = document.getElementById("canvas");
 		styleSheet = document.styleSheets[0];
 
 		dropListing.addEventListener(

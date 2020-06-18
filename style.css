@@ -15,6 +15,7 @@ body {
 .feature {
 	display: flex;
 	flex-wrap: wrap;
+	align-items: center;
 	margin-bottom: 4px;
 }
 .button {
@@ -63,16 +64,16 @@ ul {
 }
 #textbox {
 	color: white;
-	font-size: 40px;
-	font-family: sans-serif;
+	font-size: 32px;
 	border-radius: 2px;
 	padding: 2px;
 	touch-action: none;
 	position: relative;
-	max-width: 320px;
-
+	max-width: 400px;
 	/* This makes things *much* easier */
 	box-sizing: border-box;
+	font-variation-settings: "wght" var(--text-weight), "wdth" var(--text-width),
+		"slnt" var(--text-slant), "CHNK" var(--text-chonk);
 }
 
 #textbox:focus:after {
@@ -113,6 +114,75 @@ ul {
 .sidebar-right {
 	grid-column: 3 / 4;
 }
+
+#fonts li span:hover {
+	color: #999;
+}
+#fonts li span {
+	cursor: pointer;
+	display: block;
+	color: #666;
+	padding: 7px 12px;
+	overflow: hidden;
+	font-size: 12px;
+	border-radius: 6px;
+}
+
+#fonts li.active span {
+	background: #09f;
+	color: #fff;
+}
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+	position: absolute;
+	opacity: 0;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+	position: relative;
+	padding-left: 20px;
+	cursor: pointer;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: calc(50% - 6px);
+	width: 12px;
+	height: 12px;
+	background: #fff;
+	border-radius: 3px;
+	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+/* checked mark aspect */
+[type="checkbox"]:checked + label:before {
+	background: #09f;
+}
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+	content: "\2713\0020";
+	position: absolute;
+	top: calc(50% - 4px);
+	left: 2px;
+	font-size: 9px;
+	line-height: 0.8;
+	color: #fff;
+	transition: all 0.2s;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+	opacity: 0;
+	transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+	opacity: 1;
+	transform: scale(1);
+}
+
 .radio-toolbar {
 	display: flex;
 }
@@ -143,4 +213,77 @@ ul {
 .radio-toolbar input[type="radio"]:checked + label {
 	background-color: #555;
 	color: #fff;
+}
+
+:root {
+	--text-weight: 500;
+	--text-width: 100;
+	--text-chonk: 400;
+	--text-slant: 0;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body {
+	margin: 0;
+}
+
+.demo-text {
+	font-variation-settings: "wght" var(--text-weight), "wdth" var(--text-width),
+		"slnt" var(--text-slant), "CHNK" var(--text-chonk);
+	margin: 0;
+}
+
+.controls {
+	margin-top: 1rem;
+}
+
+.slider-container:not(:first-child) {
+	margin-top: 1rem;
+}
+
+.slider-controls {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 1rem;
+}
+
+.slider-label {
+	font-style: normal;
+	font-variation-settings: "slnt" var(--text-slant);
+}
+
+.output {
+	font-variation-settings: "slnt" var(--text-slant);
+}
+
+.slider {
+	-webkit-appearance: none;
+	width: 100%;
+	height: 2px;
+	border-radius: 999px;
+	background: #444;
+	outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #fff;
+	cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb:active {
+	cursor: -webkit-grabbing;
 }
