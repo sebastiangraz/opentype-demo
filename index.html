@@ -21,13 +21,12 @@
 
 			<aside class="sidebar-left">
 				<section style="height: 100%; padding: 1rem; overflow: hidden;">
-					Drag and drop fonts here
 					<ul id="fonts"></ul>
 				</section>
 			</aside>
 			<article id="canvas" class="container">
 				<div class="textbox" contenteditable="true">
-					ATAVA fi st
+					ATAVA koffie influence —> 2nd street Rose
 				</div>
 				<div class="textbox" contenteditable="true">
 					abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890
@@ -40,10 +39,6 @@
 			</article>
 			<aside class="sidebar-right">
 				<div id="otfeatures">
-					<div class="feature">
-						<input type="checkbox" id="kern" onchange="refreshFeatures()" />
-						<label for="kern">Kerning</label>
-					</div>
 					<div class="feature">
 						<input type="checkbox" id="liga" onchange="refreshFeatures()" />
 						<label for="liga">Standard Ligatures</label>
@@ -68,15 +63,8 @@
 						<label for="salt">Stylistic Alternates</label>
 					</div>
 					<div class="feature">
-						<input type="checkbox" id="titl" onchange="refreshFeatures()" />
-						<label for="titl">Titling</label>
-					</div>
-					<div class="feature">
-						<input
-							type="checkbox"
-							id="locl"
-							onchange="refreshFeatures()"
-						/><label for="locl">Local Forms</label>
+						<input type="checkbox" id="case" onchange="refreshFeatures()" />
+						<label for="case">Case Sensitive Forms</label>
 					</div>
 					<hr />
 					<div class="setting-row">
@@ -109,17 +97,6 @@
 						</div>
 					</div>
 
-					<hr />
-					<div class="feature">
-						<input type="checkbox" id="case" onchange="refreshFeatures()" />
-						<label for="case">Case Sensitive Forms</label>
-					</div>
-					<div class="feature">
-						<input type="checkbox" id="cpsp" onchange="refreshFeatures()" />
-						<label for="cpsp">Capital Spacing</label>
-					</div>
-					<hr />
-
 					<div class="setting-row">
 						<span>Figures</span>
 						<div class="radio-toolbar">
@@ -141,69 +118,30 @@
 						</div>
 					</div>
 
-					<!-- <div class="feature">
-						<input
-							type="radio"
-							name="numsty"
-							checked=""
-							id="off-dfs"
-							onchange="refreshFeatures()"
-						/>
-						<label for="off-dfs">Default Figures Style</label>
-					</div>
-					<div class="feature">
-						<input
-							type="radio"
-							id="lnum"
-							name="numsty"
-							onchange="refreshFeatures()"
-						/>
-						<label for="lnum">Lining Figures</label>
-					</div>
-					<div class="feature">
-						<input
-							type="radio"
-							id="onum"
-							name="numsty"
-							onchange="refreshFeatures()"
-						/>
-						<label for="onum">Oldstyle Figures</label>
-					</div> -->
+					<div class="setting-row">
+						<span>Uniform</span>
+						<div class="radio-toolbar">
+							<input
+								type="radio"
+								id="pnum"
+								name="numspc"
+								onchange="refreshFeatures()"
+							/>
+							<label for="pnum">Proportional</label>
 
+							<input
+								type="radio"
+								id="tnum"
+								name="numspc"
+								onchange="refreshFeatures()"
+							/>
+							<label for="tnum">Tabular</label>
+						</div>
+					</div>
 					<hr />
 					<div class="feature">
-						<input
-							type="radio"
-							name="numspc"
-							checked=""
-							id="off-dfw"
-							onchange="refreshFeatures()"
-						/>
-						<label for="off-dfw">Default Figures Width</label>
-					</div>
-					<div class="feature">
-						<input
-							type="radio"
-							id="pnum"
-							name="numspc"
-							onchange="refreshFeatures()"
-						/>
-						<label for="pnum">Proportional Figures</label>
-					</div>
-					<div class="feature">
-						<input
-							type="radio"
-							id="tnum"
-							name="numspc"
-							onchange="refreshFeatures()"
-						/>
-						<label for="tnum">Tabular Figures</label>
-					</div>
-
-					<hr />
-					<div class="feature">
-						<input type="checkbox" id="ordn" onchange="refreshFeatures()" />
-						<label for="ordn">Ordinals</label>
+						<input type="checkbox" id="zero" onchange="refreshFeatures()" />
+						<label for="zero">Slashed zero</label>
 					</div>
 					<div class="feature">
 						<input
@@ -214,10 +152,7 @@
 						/>
 						<label for="frac">Fractions</label>
 					</div>
-					<div class="feature">
-						<input type="checkbox" id="zero" onchange="refreshFeatures()" />
-						<label for="zero">Slashed zero</label>
-					</div>
+
 					<div class="feature">
 						<input type="checkbox" id="sups" onchange="refreshFeatures()" />
 						<label for="sups">Superiors</label>
@@ -234,7 +169,10 @@
 						<input type="checkbox" id="sinf" onchange="refreshFeatures()" />
 						<label for="sinf">Inferiors</label>
 					</div>
-					<div class="feature">
+
+					<hr />
+					<span>Features</span>
+					<div class="feature ssxx">
 						<input
 							type="checkbox"
 							id="ss01"
@@ -336,9 +274,16 @@
 							onchange="refreshFeatures()"
 						/><label for="ss20">ss20</label>
 					</div>
+					<hr />
 					<div class="controls">
 						<!-- Weight Controls -->
 						<div class="slider-container">
+							<div class="slider-controls">
+								<label for="text-weight" class="slider-label">
+									<span class="slider-name">Weight:</span>
+									<span class="output" data-index="0"></span>
+								</label>
+							</div>
 							<input
 								type="range"
 								min="100"
@@ -349,14 +294,15 @@
 								name="text-weight"
 								data-index="0"
 							/>
-							<div class="slider-controls">
-								<label for="text-weight" class="slider-label">
-									Weight: <span class="output" data-index="0"></span>
-								</label>
-							</div>
 						</div>
 						<!-- Width Controls -->
 						<div class="slider-container">
+							<div class="slider-controls">
+								<label for="text-width" class="slider-label">
+									<span class="slider-name">Width:</span>
+									<span class="output" data-index="1"></span>
+								</label>
+							</div>
 							<input
 								type="range"
 								min="1"
@@ -367,14 +313,15 @@
 								name="text-width"
 								data-index="1"
 							/>
-							<div class="slider-controls">
-								<label for="text-width" class="slider-label">
-									Width: <span class="output" data-index="1"></span>
-								</label>
-							</div>
 						</div>
 						<!-- Slant Controls -->
 						<div class="slider-container">
+							<div class="slider-controls">
+								<label for="text-slant" class="slider-label">
+									<span class="slider-name">Slant:</span>
+									<span class="output" data-index="2"></span>
+								</label>
+							</div>
 							<input
 								type="range"
 								min="0"
@@ -385,13 +332,14 @@
 								name="text-slant"
 								data-index="2"
 							/>
-							<div class="slider-controls">
-								<label for="text-slant" class="slider-label">
-									Slant: <span class="output" data-index="2"></span>
-								</label>
-							</div>
 						</div>
 						<div class="slider-container">
+							<div class="slider-controls">
+								<label for="text-chonk" class="slider-label">
+									<span class="slider-name">Chonk:</span>
+									<span class="output" data-index="3"></span>
+								</label>
+							</div>
 							<input
 								type="range"
 								min="100"
@@ -402,11 +350,6 @@
 								name="text-chonk"
 								data-index="3"
 							/>
-							<div class="slider-controls">
-								<label for="text-chonk" class="slider-label">
-									Chonk: <span class="output" data-index="3"></span>
-								</label>
-							</div>
 						</div>
 					</div>
 				</div>
