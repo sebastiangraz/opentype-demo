@@ -16,7 +16,6 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	margin-bottom: 4px;
-	justify-content: space-between;
 }
 .button {
 	background: #282828;
@@ -30,7 +29,7 @@ body {
 
 .grid {
 	display: grid;
-	grid-template-columns: 260px auto 260px;
+	grid-template-columns: 260px auto 320px;
 	grid-template-rows: 60px auto;
 	grid-gap: 1px;
 	height: 100vh;
@@ -53,15 +52,29 @@ header {
 	align-items: center;
 	grid-column: 1 / 4;
 }
-
+ul li {
+	list-style: none;
+}
+ul {
+	padding: 0;
+}
 .sidebar-left {
 	grid-column: 1 / 2;
 }
 #textbox {
+	color: white;
+	font-size: 40px;
+	font-family: sans-serif;
+	border-radius: 2px;
 	padding: 2px;
-	max-width: 250px;
+	touch-action: none;
 	position: relative;
+	max-width: 320px;
+
+	/* This makes things *much* easier */
+	box-sizing: border-box;
 }
+
 #textbox:focus:after {
 	position: absolute;
 	bottom: 0;
@@ -82,8 +95,52 @@ header {
 	z-index: 1;
 	overflow: hidden;
 	grid-column: 2 / 3;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
-
+.setting-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 10px 0;
+}
+.setting-row span {
+	margin-right: 8px;
+	font-size: 12px;
+	color: #fff;
+}
 .sidebar-right {
 	grid-column: 3 / 4;
+}
+.radio-toolbar {
+	display: flex;
+}
+
+.radio-toolbar input[type="radio"] {
+	opacity: 0;
+	position: fixed;
+	width: 0;
+}
+.radio-toolbar label:last-child {
+	border-radius: 0 5px 5px 0;
+}
+.radio-toolbar label:nth-child(2) {
+	border-radius: 5px 0 0 5px;
+}
+.radio-toolbar label {
+	display: inline-flex;
+	background-color: #222;
+	padding: 5px 10px;
+	font-family: sans-serif, Arial;
+	font-size: 14px;
+}
+
+.radio-toolbar label:hover {
+	background-color: #555;
+}
+
+.radio-toolbar input[type="radio"]:checked + label {
+	background-color: #555;
+	color: #fff;
 }

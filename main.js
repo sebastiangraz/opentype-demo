@@ -50,17 +50,15 @@ var FontDragAndDrop = FontDragAndDrop || {};
 		for (var i = 0; i < count; i++) {
 			var file = files[i],
 				droppedFullFileName = file.name,
-				droppedFileName,
-				droppedFileSize;
+				droppedFileName;
 
 			if (droppedFullFileName.match(acceptedFileExtensions)) {
 				droppedFileName = droppedFullFileName.replace(/\..+$/, ""); // Removes file extension from name
 				droppedFileName = droppedFileName.replace(/\W+/g, "-"); // Replace any non alpha numeric characters with -
-				droppedFileSize = Math.round(file.size / 1024) + "kb";
 
 				// Custom Addition by Andras Larsen
 
-				FontDragAndDrop.processData(file, droppedFileName, droppedFileSize);
+				FontDragAndDrop.processData(file, droppedFileName);
 			} else {
 				alert(
 					"Invalid file extension. Will only accept ttf, otf, woff or woff2 font files"
@@ -69,11 +67,9 @@ var FontDragAndDrop = FontDragAndDrop || {};
 		}
 	};
 
-	FontDragAndDrop.processData = function (file, name, size) {
+	FontDragAndDrop.processData = function (file, name) {
 		var reader = new FileReader();
 		reader.name = name;
-		reader.size = size;
-
 		/* 
 	Chrome 6 dev can't do DOM2 event based listeners on the FileReader object so fallback to DOM0
 	http://code.google.com/p/chromium/issues/detail?id=48367
@@ -89,11 +85,9 @@ var FontDragAndDrop = FontDragAndDrop || {};
 		domElements = [
 			document.createElement("li"),
 			document.createElement("span"),
-			document.createElement("span"),
 		];
 
 		var name = event.target.name,
-			size = event.target.size,
 			data = event.target.result;
 
 		// Get font file and prepend it to stylsheet using @font-face rule
@@ -101,13 +95,13 @@ var FontDragAndDrop = FontDragAndDrop || {};
 			"@font-face{font-family: " + name + "; src:url(" + data + ");}";
 		styleSheet.insertRule(fontFaceStyle, 0);
 
-		domElements[2].appendChild(document.createTextNode(size));
-		domElements[1].appendChild(document.createTextNode(name));
+		domElements[1].appendChild(
+			document.createTextNode(name.replace(/-/g, " "))
+		);
 		domElements[0].className = "active";
 		domElements[0].title = name;
 		domElements[0].style.fontFamily = name;
 		domElements[0].appendChild(domElements[1]);
-		domElements[0].appendChild(domElements[2]);
 
 		fontPreviewFragment.appendChild(domElements[0]);
 
