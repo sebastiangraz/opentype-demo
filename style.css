@@ -62,21 +62,22 @@ ul {
 .sidebar-left {
 	grid-column: 1 / 2;
 }
-#textbox {
+.textbox {
 	color: white;
-	font-size: 32px;
+	font-size: calc(0.5em + 2vw);
 	border-radius: 2px;
 	padding: 2px;
 	touch-action: none;
 	position: relative;
-	max-width: 400px;
+	max-width: 60%;
+	margin-bottom: 80px;
 	/* This makes things *much* easier */
 	box-sizing: border-box;
 	font-variation-settings: "wght" var(--text-weight), "wdth" var(--text-width),
 		"slnt" var(--text-slant), "CHNK" var(--text-chonk);
 }
 
-#textbox:focus:after {
+.textbox:focus:after {
 	position: absolute;
 	bottom: 0;
 	right: 0;
@@ -88,7 +89,7 @@ ul {
 	background: #fff;
 	box-shadow: 0 0 0 1px #09f;
 }
-#textbox:focus {
+.textbox:focus {
 	outline: none;
 	box-shadow: 0 0 0 1px #09f;
 }
@@ -97,6 +98,7 @@ ul {
 	overflow: hidden;
 	grid-column: 2 / 3;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 }
@@ -217,7 +219,7 @@ ul {
 
 :root {
 	--text-weight: 500;
-	--text-width: 100;
+	--text-width: 1;
 	--text-chonk: 400;
 	--text-slant: 0;
 }

@@ -26,7 +26,14 @@
 				</section>
 			</aside>
 			<article id="canvas" class="container">
-				<div id="textbox" contenteditable="true">
+				<div class="textbox" contenteditable="true">
+					ATAVA fi st
+				</div>
+				<div class="textbox" contenteditable="true">
+					abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890
+					@&!?#$€%
+				</div>
+				<div class="textbox" contenteditable="true">
 					abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890
 					@&!?#$€%
 				</div>
@@ -34,30 +41,15 @@
 			<aside class="sidebar-right">
 				<div id="otfeatures">
 					<div class="feature">
-						<input
-							type="checkbox"
-							id="kern"
-							onchange="refreshFeatures()"
-							checked=""
-						/>
-						<label for="kern">OpenType Kerning</label>
+						<input type="checkbox" id="kern" onchange="refreshFeatures()" />
+						<label for="kern">Kerning</label>
 					</div>
 					<div class="feature">
-						<input
-							type="checkbox"
-							id="liga"
-							checked=""
-							onchange="refreshFeatures()"
-						/>
+						<input type="checkbox" id="liga" onchange="refreshFeatures()" />
 						<label for="liga">Standard Ligatures</label>
 					</div>
 					<div class="feature">
-						<input
-							type="checkbox"
-							id="calt"
-							checked=""
-							onchange="refreshFeatures()"
-						/>
+						<input type="checkbox" id="calt" onchange="refreshFeatures()" />
 						<label for="calt">Contextual Alternates</label>
 					</div>
 					<div class="feature">
@@ -369,7 +361,7 @@
 								type="range"
 								min="1"
 								max="9"
-								value="3"
+								value="1"
 								class="slider"
 								id="text-width"
 								name="text-width"
@@ -435,7 +427,7 @@
 	<script type="module">
 		import interact from "https://cdn.interactjs.io/v1.9.19/interactjs/index.js";
 
-		interact("#textbox").draggable({
+		interact(".textbox").draggable({
 			// enable inertial throwing
 			inertia: true,
 			// keep the element within the area of it's parent
