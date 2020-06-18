@@ -9,6 +9,15 @@ body {
 * {
 	box-sizing: border-box;
 }
+#otfeatures {
+	padding: 1rem;
+}
+.feature {
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 4px;
+	justify-content: space-between;
+}
 .button {
 	background: #282828;
 	height: 30px;
@@ -18,14 +27,19 @@ body {
 	align-items: center;
 	justify-content: center;
 }
+
 .grid {
 	display: grid;
-	grid-template-columns: 260px auto auto;
+	grid-template-columns: 260px auto 260px;
 	grid-template-rows: 60px auto;
 	grid-gap: 1px;
 	height: 100vh;
 }
-
+hr {
+	border: none;
+	background: #333;
+	height: 1px;
+}
 header,
 aside,
 footer {

@@ -108,18 +108,6 @@ function refreshFeatures() {
 		? "normal"
 		: "small-caps";
 
-	// Show Recommended Code
-	var recommendedCSS = "";
-	if (fakeSC == "small-caps")
-		recommendedCSS += "font-variant: " + fakeSC + "; <br/>";
-	recommendedCSS += "font-feature-settings: " + codeCSS3 + "; <br/>";
-	recommendedCSS += "-moz-font-feature-settings: " + codeCSS3 + "; <br/>";
-	recommendedCSS += "-webkit-font-feature-settings: " + codeCSS3 + "; <br/>";
-	recommendedCSS += "-ms-font-feature-settings: " + codeCSS3 + "; <br/>";
-	recommendedCSS += "-o-font-feature-settings: " + codeCSS3 + ";";
-
-	// $("#csscode").html(recommendedCSS);
-
 	// Apply the Code
 
 	document.querySelector("#canvas").style.setProperty("font-variant", fakeSC);
