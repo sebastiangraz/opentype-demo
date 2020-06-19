@@ -25,341 +25,412 @@
 				</section>
 			</aside>
 			<article id="canvas" class="container">
-				<div class="textbox" contenteditable="true">
+				<div class="textbox draggable" contenteditable="true">
 					ATAVA koffie influence —> 2nd street Rose
 				</div>
-				<div class="textbox" contenteditable="true">
+				<div class="textbox draggable" contenteditable="true">
 					abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890
 					@&!?#$€%
 				</div>
-				<div class="textbox" contenteditable="true">
+				<div class="textbox draggable" contenteditable="true">
 					abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890
 					@&!?#$€%
 				</div>
 			</article>
-			<aside class="sidebar-right">
-				<div id="otfeatures">
-					<div class="feature">
-						<input type="checkbox" id="liga" onchange="refreshFeatures()" />
-						<label for="liga">Standard Ligatures</label>
-					</div>
-					<div class="feature">
-						<input type="checkbox" id="calt" onchange="refreshFeatures()" />
-						<label for="calt">Contextual Alternates</label>
-					</div>
-					<div class="feature">
-						<input type="checkbox" id="dlig" onchange="refreshFeatures()" />
-						<label for="dlig">Discretionary Ligatures</label>
-					</div>
-					<div class="feature">
-						<input
-							type="checkbox"
-							id="swsh"
-							onchange="refreshFeatures()"
-						/><label for="swsh">Swashes</label>
-					</div>
-					<div class="feature">
-						<input type="checkbox" id="salt" onchange="refreshFeatures()" />
-						<label for="salt">Stylistic Alternates</label>
-					</div>
-					<div class="feature">
-						<input type="checkbox" id="case" onchange="refreshFeatures()" />
-						<label for="case">Case Sensitive Forms</label>
-					</div>
-					<hr />
-					<div class="setting-row">
-						<span>Small Caps</span>
-						<div class="radio-toolbar">
-							<input
-								type="radio"
-								name="smcp"
-								checked=""
-								id="off"
-								onchange="refreshFeatures()"
-							/>
-							<label for="off">Off</label>
-
-							<input
-								type="radio"
-								id="fake-smcp"
-								name="smcp"
-								onchange="refreshFeatures()"
-							/>
-							<label for="fake-smcp">Fake</label>
-
-							<input
-								type="radio"
-								id="c2sc"
-								name="smcp"
-								onchange="refreshFeatures()"
-							/>
-							<label for="c2sc">Real</label>
-						</div>
-					</div>
-
-					<div class="setting-row">
-						<span>Figures</span>
-						<div class="radio-toolbar">
-							<input
-								type="radio"
-								id="lnum"
-								name="numsty"
-								onchange="refreshFeatures()"
-							/>
-							<label for="lnum">Default</label>
-
-							<input
-								type="radio"
-								id="onum"
-								name="numsty"
-								onchange="refreshFeatures()"
-							/>
-							<label for="onum">Oldstyle</label>
-						</div>
-					</div>
-
-					<div class="setting-row">
-						<span>Uniform</span>
-						<div class="radio-toolbar">
-							<input
-								type="radio"
-								id="pnum"
-								name="numspc"
-								onchange="refreshFeatures()"
-							/>
-							<label for="pnum">Proportional</label>
-
-							<input
-								type="radio"
-								id="tnum"
-								name="numspc"
-								onchange="refreshFeatures()"
-							/>
-							<label for="tnum">Tabular</label>
-						</div>
-					</div>
-					<hr />
-					<span style="margin-bottom: 12px; display: block; color: #fff;"
-						>Numerical</span
+			<div id="otfeatures">
+				<div
+					style="
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+					"
+				>
+					<span style="display: block; color: #fff;">Extended options</span>
+					<span id="exit" style="font-size: 16px;">×</span>
+				</div>
+				<hr />
+				<div class="feature">
+					<input type="checkbox" id="liga" onchange="refreshFeatures()" />
+					<label for="liga">Standard Ligatures</label>
+				</div>
+				<div class="feature">
+					<input type="checkbox" id="calt" onchange="refreshFeatures()" />
+					<label for="calt">Contextual Alternates</label>
+				</div>
+				<div class="feature">
+					<input type="checkbox" id="dlig" onchange="refreshFeatures()" />
+					<label for="dlig">Discretionary Ligatures</label>
+				</div>
+				<div class="feature">
+					<input type="checkbox" id="swsh" onchange="refreshFeatures()" /><label
+						for="swsh"
+						>Swashes</label
 					>
-					<div class="feature">
-						<input type="checkbox" id="zero" onchange="refreshFeatures()" />
-						<label for="zero">Slashed zero</label>
-					</div>
-					<div class="feature">
+				</div>
+				<div class="feature">
+					<input type="checkbox" id="salt" onchange="refreshFeatures()" />
+					<label for="salt">Stylistic Alternates</label>
+				</div>
+				<div class="feature">
+					<input type="checkbox" id="case" onchange="refreshFeatures()" />
+					<label for="case">Case Sensitive Forms</label>
+				</div>
+				<hr />
+				<div class="setting-row">
+					<span>Small Caps</span>
+					<div class="radio-toolbar">
 						<input
-							type="checkbox"
-							id="frac"
-							name="frac"
+							type="radio"
+							name="smcp"
+							checked=""
+							id="off"
 							onchange="refreshFeatures()"
 						/>
-						<label for="frac">Fractions</label>
-					</div>
+						<label for="off">Off</label>
 
-					<div class="feature">
-						<input type="checkbox" id="sups" onchange="refreshFeatures()" />
-						<label for="sups">Superiors</label>
-					</div>
-					<div class="feature">
-						<input type="checkbox" id="numr" onchange="refreshFeatures()" />
-						<label for="numr">Numerator</label>
-					</div>
-					<div class="feature">
-						<input type="checkbox" id="dnom" onchange="refreshFeatures()" />
-						<label for="dnom">Denominator</label>
-					</div>
-					<div class="feature">
-						<input type="checkbox" id="sinf" onchange="refreshFeatures()" />
-						<label for="sinf">Inferiors</label>
-					</div>
+						<input
+							type="radio"
+							id="fake-smcp"
+							name="smcp"
+							onchange="refreshFeatures()"
+						/>
+						<label for="fake-smcp">Fake</label>
 
+						<input
+							type="radio"
+							id="c2sc"
+							name="smcp"
+							onchange="refreshFeatures()"
+						/>
+						<label for="c2sc">Real</label>
+					</div>
+				</div>
+
+				<div class="setting-row">
+					<span>Figures</span>
+					<div class="radio-toolbar">
+						<input
+							type="radio"
+							id="lnum"
+							name="numsty"
+							onchange="refreshFeatures()"
+						/>
+						<label for="lnum">Default</label>
+
+						<input
+							type="radio"
+							id="onum"
+							name="numsty"
+							onchange="refreshFeatures()"
+						/>
+						<label for="onum">Oldstyle</label>
+					</div>
+				</div>
+
+				<div class="setting-row">
+					<span>Uniform</span>
+					<div class="radio-toolbar">
+						<input
+							type="radio"
+							id="pnum"
+							name="numspc"
+							onchange="refreshFeatures()"
+						/>
+						<label for="pnum">Proportional</label>
+
+						<input
+							type="radio"
+							id="tnum"
+							name="numspc"
+							onchange="refreshFeatures()"
+						/>
+						<label for="tnum">Tabular</label>
+					</div>
+				</div>
+				<hr />
+				<span style="margin-bottom: 12px; display: block; color: #fff;"
+					>Numerical</span
+				>
+				<div class="feature">
+					<input type="checkbox" id="zero" onchange="refreshFeatures()" />
+					<label for="zero">Slashed zero</label>
+				</div>
+				<div class="feature">
+					<input
+						type="checkbox"
+						id="frac"
+						name="frac"
+						onchange="refreshFeatures()"
+					/>
+					<label for="frac">Fractions</label>
+				</div>
+
+				<div class="feature">
+					<input type="checkbox" id="sups" onchange="refreshFeatures()" />
+					<label for="sups">Superiors</label>
+				</div>
+				<div class="feature">
+					<input type="checkbox" id="numr" onchange="refreshFeatures()" />
+					<label for="numr">Numerator</label>
+				</div>
+				<div class="feature">
+					<input type="checkbox" id="dnom" onchange="refreshFeatures()" />
+					<label for="dnom">Denominator</label>
+				</div>
+				<div class="feature">
+					<input type="checkbox" id="sinf" onchange="refreshFeatures()" />
+					<label for="sinf">Inferiors</label>
+				</div>
+
+				<hr />
+				<span style="margin-bottom: 12px; display: block; color: #fff;"
+					>Custom Features</span
+				>
+				<div class="feature ssxx">
+					<input type="checkbox" id="ss01" onchange="refreshFeatures()" /><label
+						for="ss01"
+						>ss01</label
+					>
+					<input type="checkbox" id="ss02" onchange="refreshFeatures()" /><label
+						for="ss02"
+						>ss02</label
+					>
+					<input type="checkbox" id="ss03" onchange="refreshFeatures()" /><label
+						for="ss03"
+						>ss03</label
+					>
+					<input type="checkbox" id="ss04" onchange="refreshFeatures()" /><label
+						for="ss04"
+						>ss04</label
+					>
+					<input type="checkbox" id="ss05" onchange="refreshFeatures()" /><label
+						for="ss05"
+						>ss05</label
+					>
+					<input type="checkbox" id="ss06" onchange="refreshFeatures()" /><label
+						for="ss06"
+						>ss06</label
+					>
+					<input type="checkbox" id="ss07" onchange="refreshFeatures()" /><label
+						for="ss07"
+						>ss07</label
+					>
+					<input type="checkbox" id="ss08" onchange="refreshFeatures()" /><label
+						for="ss08"
+						>ss08</label
+					>
+					<input type="checkbox" id="ss09" onchange="refreshFeatures()" /><label
+						for="ss09"
+						>ss09</label
+					>
+					<input type="checkbox" id="ss10" onchange="refreshFeatures()" /><label
+						for="ss10"
+						>ss10</label
+					>
+					<input type="checkbox" id="ss11" onchange="refreshFeatures()" /><label
+						for="ss11"
+						>ss11</label
+					>
+					<input type="checkbox" id="ss12" onchange="refreshFeatures()" /><label
+						for="ss12"
+						>ss12</label
+					>
+					<input type="checkbox" id="ss13" onchange="refreshFeatures()" /><label
+						for="ss13"
+						>ss13</label
+					>
+					<input type="checkbox" id="ss14" onchange="refreshFeatures()" /><label
+						for="ss14"
+						>ss14</label
+					>
+					<input type="checkbox" id="ss15" onchange="refreshFeatures()" /><label
+						for="ss15"
+						>ss15</label
+					>
+					<input type="checkbox" id="ss16" onchange="refreshFeatures()" /><label
+						for="ss16"
+						>ss16</label
+					>
+					<input type="checkbox" id="ss17" onchange="refreshFeatures()" /><label
+						for="ss17"
+						>ss17</label
+					>
+					<input type="checkbox" id="ss18" onchange="refreshFeatures()" /><label
+						for="ss18"
+						>ss18</label
+					>
+					<input type="checkbox" id="ss19" onchange="refreshFeatures()" /><label
+						for="ss19"
+						>ss19</label
+					>
+					<input type="checkbox" id="ss20" onchange="refreshFeatures()" /><label
+						for="ss20"
+						>ss20</label
+					>
+				</div>
+				<hr />
+				<span style="margin-bottom: 12px; display: block; color: #fff;"
+					>Variable Settings</span
+				>
+				<div class="controls">
+					<!-- Weight Controls -->
+					<div class="slider-container">
+						<div class="slider-controls">
+							<label for="text-weight" class="slider-label">
+								<span class="slider-name">Weight:</span>
+								<span class="output" data-index="0"></span>
+							</label>
+						</div>
+						<input
+							type="range"
+							min="100"
+							max="900"
+							value="500"
+							class="slider"
+							id="text-weight"
+							name="text-weight"
+							data-index="0"
+						/>
+					</div>
+					<!-- Width Controls -->
+					<div class="slider-container">
+						<div class="slider-controls">
+							<label for="text-width" class="slider-label">
+								<span class="slider-name">Width:</span>
+								<span class="output" data-index="1"></span>
+							</label>
+						</div>
+						<input
+							type="range"
+							min="1"
+							max="9"
+							value="1"
+							class="slider"
+							id="text-width"
+							name="text-width"
+							data-index="1"
+						/>
+					</div>
+					<!-- Slant Controls -->
+					<div class="slider-container">
+						<div class="slider-controls">
+							<label for="text-slant" class="slider-label">
+								<span class="slider-name">Slant:</span>
+								<span class="output" data-index="2"></span>
+							</label>
+						</div>
+						<input
+							type="range"
+							min="0"
+							max="12"
+							value="0"
+							class="slider"
+							id="text-slant"
+							name="text-slant"
+							data-index="2"
+						/>
+					</div>
+					<div class="slider-container">
+						<div class="slider-controls">
+							<label for="text-chonk" class="slider-label">
+								<span class="slider-name">Chonk:</span>
+								<span class="output" data-index="3"></span>
+							</label>
+						</div>
+						<input
+							type="range"
+							min="100"
+							max="900"
+							value="100"
+							class="slider"
+							id="text-chonk"
+							name="text-chonk"
+							data-index="3"
+						/>
+					</div>
+				</div>
+			</div>
+			<aside class="sidebar-right">
+				<div id="text-properties">
+					<div style="height: 16px;"></div>
+					<hr style="margin-bottom: 40px;" />
+					<div class="setting-row">
+						<div class="inactive-row"></div>
+						<div class="inactive-row" style="height: 26px;"></div>
+						<div class="inactive-row" style="height: 26px;"></div>
+					</div>
+					<div class="setting-row">
+						<div class="inactive-row"></div>
+						<div class="inactive-row" style="height: 26px;"></div>
+						<div class="inactive-row" style="height: 26px;"></div>
+					</div>
+					<div class="setting-row">
+						<div class="inactive-row"></div>
+						<div class="inactive-row" style="height: 26px;"></div>
+						<div class="inactive-row" style="height: 26px;"></div>
+					</div>
+					<div class="setting-row">
+						<div class="inactive-row" style="max-width: 86px;"></div>
+						<div class="inactive-row" style="height: 26px;"></div>
+					</div>
+					<div class="setting-row">
+						<div class="inactive-row" style="height: 0; max-width: 86px;"></div>
+						<div class="inactive-row" style="height: 26px;"></div>
+					</div>
+					<div class="setting-row">
+						<div class="inactive-row"></div>
+						<div class="inactive-row" style="height: 26px;"></div>
+						<div class="inactive-row"></div>
+					</div>
+					<div class="setting-row">
+						<div class="inactive-row"></div>
+						<div class="inactive-row" style="height: 26px;"></div>
+						<div class="inactive-row"></div>
+					</div>
+					<hr style="margin-bottom: 40px;" />
+					<div class="setting-row">
+						<div class="inactive-row" style="height: 26px;"></div>
+						<div class="inactive-row" style="height: 26px;"></div>
+						<div class="inactive-row"></div>
+					</div>
 					<hr />
 					<span style="margin-bottom: 12px; display: block; color: #fff;"
-						>Custom Features</span
+						>Text</span
 					>
-					<div class="feature ssxx">
-						<input
-							type="checkbox"
-							id="ss01"
-							onchange="refreshFeatures()"
-						/><label for="ss01">ss01</label>
-						<input
-							type="checkbox"
-							id="ss02"
-							onchange="refreshFeatures()"
-						/><label for="ss02">ss02</label>
-						<input
-							type="checkbox"
-							id="ss03"
-							onchange="refreshFeatures()"
-						/><label for="ss03">ss03</label>
-						<input
-							type="checkbox"
-							id="ss04"
-							onchange="refreshFeatures()"
-						/><label for="ss04">ss04</label>
-						<input
-							type="checkbox"
-							id="ss05"
-							onchange="refreshFeatures()"
-						/><label for="ss05">ss05</label>
-						<input
-							type="checkbox"
-							id="ss06"
-							onchange="refreshFeatures()"
-						/><label for="ss06">ss06</label>
-						<input
-							type="checkbox"
-							id="ss07"
-							onchange="refreshFeatures()"
-						/><label for="ss07">ss07</label>
-						<input
-							type="checkbox"
-							id="ss08"
-							onchange="refreshFeatures()"
-						/><label for="ss08">ss08</label>
-						<input
-							type="checkbox"
-							id="ss09"
-							onchange="refreshFeatures()"
-						/><label for="ss09">ss09</label>
-						<input
-							type="checkbox"
-							id="ss10"
-							onchange="refreshFeatures()"
-						/><label for="ss10">ss10</label>
-						<input
-							type="checkbox"
-							id="ss11"
-							onchange="refreshFeatures()"
-						/><label for="ss11">ss11</label>
-						<input
-							type="checkbox"
-							id="ss12"
-							onchange="refreshFeatures()"
-						/><label for="ss12">ss12</label>
-						<input
-							type="checkbox"
-							id="ss13"
-							onchange="refreshFeatures()"
-						/><label for="ss13">ss13</label>
-						<input
-							type="checkbox"
-							id="ss14"
-							onchange="refreshFeatures()"
-						/><label for="ss14">ss14</label>
-						<input
-							type="checkbox"
-							id="ss15"
-							onchange="refreshFeatures()"
-						/><label for="ss15">ss15</label>
-						<input
-							type="checkbox"
-							id="ss16"
-							onchange="refreshFeatures()"
-						/><label for="ss16">ss16</label>
-						<input
-							type="checkbox"
-							id="ss17"
-							onchange="refreshFeatures()"
-						/><label for="ss17">ss17</label>
-						<input
-							type="checkbox"
-							id="ss18"
-							onchange="refreshFeatures()"
-						/><label for="ss18">ss18</label>
-						<input
-							type="checkbox"
-							id="ss19"
-							onchange="refreshFeatures()"
-						/><label for="ss19">ss19</label>
-						<input
-							type="checkbox"
-							id="ss20"
-							onchange="refreshFeatures()"
-						/><label for="ss20">ss20</label>
+					<div class="setting-row">
+						<span style="min-width: 86px;">Typeface</span>
+						<div class="inactive-row active-row" style="height: 26px;"></div>
+					</div>
+					<div class="setting-row">
+						<span style="min-width: 86px;">Style</span>
+						<div class="inactive-row active-row" style="height: 26px;"></div>
+					</div>
+					<div class="setting-row">
+						<span style="min-width: 86px;">Size</span>
+						<div class="inactive-row active-row" style="height: 26px;"></div>
+						<div class="inactive-row active-row"></div>
+					</div>
+					<div class="setting-row">
+						<span style="min-width: 86px;">Spacing</span>
+						<div class="inactive-row active-row" style="height: 26px;"></div>
+						<div class="inactive-row active-row" style="height: 26px;"></div>
+					</div>
+					<div class="setting-row">
+						<span style="min-width: 86px;">Align</span>
+						<div class="inactive-row active-row" style="height: 26px;"></div>
+					</div>
+					<div class="setting-row">
+						<span style="min-width: 86px;"></span>
+						<div
+							tabindex="0"
+							id="extended"
+							class="inactive-row active-row"
+							style="height: 26px;"
+						>
+							Extended options
+						</div>
 					</div>
 					<hr />
-					<span style="margin-bottom: 12px; display: block; color: #fff;"
-						>Variable Settings</span
-					>
-					<div class="controls">
-						<!-- Weight Controls -->
-						<div class="slider-container">
-							<div class="slider-controls">
-								<label for="text-weight" class="slider-label">
-									<span class="slider-name">Weight:</span>
-									<span class="output" data-index="0"></span>
-								</label>
-							</div>
-							<input
-								type="range"
-								min="100"
-								max="900"
-								value="500"
-								class="slider"
-								id="text-weight"
-								name="text-weight"
-								data-index="0"
-							/>
-						</div>
-						<!-- Width Controls -->
-						<div class="slider-container">
-							<div class="slider-controls">
-								<label for="text-width" class="slider-label">
-									<span class="slider-name">Width:</span>
-									<span class="output" data-index="1"></span>
-								</label>
-							</div>
-							<input
-								type="range"
-								min="1"
-								max="9"
-								value="1"
-								class="slider"
-								id="text-width"
-								name="text-width"
-								data-index="1"
-							/>
-						</div>
-						<!-- Slant Controls -->
-						<div class="slider-container">
-							<div class="slider-controls">
-								<label for="text-slant" class="slider-label">
-									<span class="slider-name">Slant:</span>
-									<span class="output" data-index="2"></span>
-								</label>
-							</div>
-							<input
-								type="range"
-								min="0"
-								max="12"
-								value="0"
-								class="slider"
-								id="text-slant"
-								name="text-slant"
-								data-index="2"
-							/>
-						</div>
-						<div class="slider-container">
-							<div class="slider-controls">
-								<label for="text-chonk" class="slider-label">
-									<span class="slider-name">Chonk:</span>
-									<span class="output" data-index="3"></span>
-								</label>
-							</div>
-							<input
-								type="range"
-								min="100"
-								max="900"
-								value="100"
-								class="slider"
-								id="text-chonk"
-								name="text-chonk"
-								data-index="3"
-							/>
-						</div>
-					</div>
 				</div>
 			</aside>
 		</div>
@@ -378,7 +449,7 @@
 	<script type="module">
 		import interact from "https://cdn.interactjs.io/v1.9.19/interactjs/index.js";
 
-		interact(".textbox").draggable({
+		interact(".draggable").draggable({
 			// enable inertial throwing
 			inertia: true,
 			// keep the element within the area of it's parent

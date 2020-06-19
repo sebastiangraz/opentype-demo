@@ -141,3 +141,17 @@ var FontDragAndDrop = FontDragAndDrop || {};
 
 	window.addEventListener("load", FontDragAndDrop.setup, false);
 })();
+
+var otf = document.querySelector("#otfeatures");
+var cta = document.querySelector("#extended");
+var exit = document.querySelector("#exit");
+
+console.log(otf);
+
+cta.addEventListener("click", (event) => {
+	otf.classList.toggle("active");
+});
+
+exit.addEventListener("click", (event) => {
+	otf.classList.remove("active");
+});
