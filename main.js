@@ -1,157 +1,179 @@
 var FontDragAndDrop = FontDragAndDrop || {};
 
 (function () {
-	var dropContainer,
-		dropListing,
-		displayContainer,
-		domElements,
-		fontPreviewFragment = document.createDocumentFragment(),
-		styleSheet,
-		fontFaceStyle;
+  var dropContainer,
+    dropListing,
+    displayContainer,
+    domElements,
+    fontPreviewFragment = document.createDocumentFragment(),
+    styleSheet,
+    fontFaceStyle;
 
-	FontDragAndDrop.setup = function () {
-		dropListing = document.getElementById("fonts");
-		dropContainer = document.getElementsByTagName("section")[0];
-		displayContainer = document.getElementById("canvas");
-		styleSheet = document.styleSheets[0];
+  FontDragAndDrop.setup = function () {
+    dropListing = document.getElementById("fonts");
+    dropContainer = document.getElementsByTagName("section")[0];
+    displayContainer = document.getElementById("canvas");
+    styleSheet = document.styleSheets[0];
 
-		dropListing.addEventListener(
-			"click",
-			FontDragAndDrop.handleFontChange,
-			false
-		);
+    dropListing.addEventListener(
+      "click",
+      FontDragAndDrop.handleFontChange,
+      false
+    );
 
-		/* DnD event listeners */
-		dropContainer.addEventListener(
-			"dragenter",
-			function (event) {
-				FontDragAndDrop.preventActions(event);
-			},
-			false
-		);
-		dropContainer.addEventListener(
-			"dragover",
-			function (event) {
-				FontDragAndDrop.preventActions(event);
-			},
-			false
-		);
-		dropContainer.addEventListener("drop", FontDragAndDrop.handleDrop, false);
-	};
+    /* DnD event listeners */
+    dropContainer.addEventListener(
+      "dragenter",
+      function (event) {
+        FontDragAndDrop.preventActions(event);
+      },
+      false
+    );
+    dropContainer.addEventListener(
+      "dragover",
+      function (event) {
+        FontDragAndDrop.preventActions(event);
+      },
+      false
+    );
+    dropContainer.addEventListener("drop", FontDragAndDrop.handleDrop, false);
+  };
 
-	FontDragAndDrop.handleDrop = function (evt) {
-		var dt = evt.dataTransfer,
-			files = dt.files || false,
-			count = files.length,
-			acceptedFileExtensions = /^.*\.(ttf|otf|woff|woff2)$/i;
+  FontDragAndDrop.handleDrop = function (evt) {
+    var dt = evt.dataTransfer,
+      files = dt.files || false,
+      count = files.length,
+      acceptedFileExtensions = /^.*\.(ttf|otf|woff|woff2)$/i;
 
-		FontDragAndDrop.preventActions(evt);
+    FontDragAndDrop.preventActions(evt);
 
-		for (var i = 0; i < count; i++) {
-			var file = files[i],
-				droppedFullFileName = file.name,
-				droppedFileName;
+    for (var i = 0; i < count; i++) {
+      var file = files[i],
+        droppedFullFileName = file.name,
+        droppedFileName;
 
-			if (droppedFullFileName.match(acceptedFileExtensions)) {
-				droppedFileName = droppedFullFileName.replace(/\..+$/, ""); // Removes file extension from name
-				droppedFileName = droppedFileName.replace(/\W+/g, "-"); // Replace any non alpha numeric characters with -
+      if (droppedFullFileName.match(acceptedFileExtensions)) {
+        droppedFileName = droppedFullFileName.replace(/\..+$/, ""); // Removes file extension from name
+        droppedFileName = droppedFileName.replace(/\W+/g, "-"); // Replace any non alpha numeric characters with -
 
-				// Custom Addition by Andras Larsen
+        // Custom Addition by Andras Larsen
 
-				FontDragAndDrop.processData(file, droppedFileName);
-			} else {
-				alert(
-					"Invalid file extension. Will only accept ttf, otf, woff or woff2 font files"
-				);
-			}
-		}
-	};
+        FontDragAndDrop.processData(file, droppedFileName);
+      } else {
+        alert(
+          "Invalid file extension. Will only accept ttf, otf, woff or woff2 font files"
+        );
+      }
+    }
+  };
 
-	FontDragAndDrop.processData = function (file, name) {
-		var reader = new FileReader();
-		reader.name = name;
-		/* 
+  FontDragAndDrop.processData = function (file, name) {
+    var reader = new FileReader();
+    reader.name = name;
+    /* 
 	Chrome 6 dev can't do DOM2 event based listeners on the FileReader object so fallback to DOM0
 	http://code.google.com/p/chromium/issues/detail?id=48367
 	reader.addEventListener("loadend", FontDragAndDrop.buildFontListItem, false);
 	*/
-		reader.onloadend = function (event) {
-			FontDragAndDrop.buildFontListItem(event);
-		};
-		reader.readAsDataURL(file);
-	};
+    reader.onloadend = function (event) {
+      try {
+        var fontBuffer = event.target.result;
 
-	FontDragAndDrop.buildFontListItem = function (event) {
-		domElements = [
-			document.createElement("li"),
-			document.createElement("span"),
-		];
+        var vf = new VariableFont(opentype.parse(fontBuffer));
+        console.log(event.target.result, vf);
+        FontDragAndDrop.buildFontListItem(event);
+      } catch (e) {
+        alert("Error: " + e);
+      }
+    };
+    reader.readAsArrayBuffer(file);
+  };
 
-		var name = event.target.name,
-			data = event.target.result;
+  function Uint8ToString(u8a) {
+    var CHUNK_SZ = 0x8000;
+    var c = [];
+    for (var i = 0; i < u8a.length; i += CHUNK_SZ) {
+      c.push(String.fromCharCode.apply(null, u8a.subarray(i, i + CHUNK_SZ)));
+    }
+    return c.join("");
+  }
 
-		// Get font file and prepend it to stylsheet using @font-face rule
-		fontFaceStyle =
-			"@font-face{font-family: " + name + "; src:url(" + data + ");}";
-		styleSheet.insertRule(fontFaceStyle, 0);
+  FontDragAndDrop.buildFontListItem = function (event) {
+    domElements = [
+      document.createElement("li"),
+      document.createElement("span"),
+    ];
 
-		domElements[1].appendChild(
-			document.createTextNode(name.replace(/-/g, " "))
-		);
-		domElements[0].className = "active";
-		domElements[0].title = name;
-		domElements[0].style.fontFamily = name;
-		domElements[0].appendChild(domElements[1]);
+    var name = event.target.name,
+      data = event.target.result;
 
-		fontPreviewFragment.appendChild(domElements[0]);
+    var base64String = btoa(Uint8ToString(new Uint8Array(event.target.result)));
+    console.log(base64String);
 
-		dropListing.appendChild(fontPreviewFragment);
-		FontDragAndDrop.updateActiveFont(domElements[0]);
-		displayContainer.style.fontFamily = name;
-	};
+    // Get font file and prepend it to stylsheet using @font-face rule
+    fontFaceStyle =
+      "@font-face{font-family: " +
+      name +
+      "; src:url('data:;base64," +
+      base64String +
+      "');}";
+    styleSheet.insertRule(fontFaceStyle, 0);
 
-	/* Control changing of fonts in drop list  */
-	FontDragAndDrop.handleFontChange = function (evt) {
-		var clickTarget = evt.target || window.event.srcElement;
+    domElements[1].appendChild(
+      document.createTextNode(name.replace(/-/g, " "))
+    );
+    domElements[0].className = "active";
+    domElements[0].title = name;
+    domElements[0].style.fontFamily = name;
+    domElements[0].appendChild(domElements[1]);
 
-		if (clickTarget.nodeName.toLowerCase() === "span") {
-			clickTarget = clickTarget.parentNode;
-			FontDragAndDrop.updateActiveFont(clickTarget);
-		}
-	};
-	FontDragAndDrop.updateActiveFont = function (target) {
-		var getFontFamily = target.title,
-			dropListItem = dropListing.getElementsByTagName("li");
-		displayContainer.style.fontFamily = getFontFamily;
-		for (var i = 0, len = dropListItem.length; i < len; i++) {
-			dropListItem[i].className = "";
-		}
-		target.className = "active";
-	};
+    fontPreviewFragment.appendChild(domElements[0]);
 
-	FontDragAndDrop.preventActions = function (evt) {
-		if (evt.stopPropagation && evt.preventDefault) {
-			evt.stopPropagation();
-			evt.preventDefault();
-		} else {
-			evt.cancelBubble = true;
-			evt.returnValue = false;
-		}
-	};
+    dropListing.appendChild(fontPreviewFragment);
+    FontDragAndDrop.updateActiveFont(domElements[0]);
+    displayContainer.style.fontFamily = name;
+  };
 
-	window.addEventListener("load", FontDragAndDrop.setup, false);
+  /* Control changing of fonts in drop list  */
+  FontDragAndDrop.handleFontChange = function (evt) {
+    var clickTarget = evt.target || window.event.srcElement;
+
+    if (clickTarget.nodeName.toLowerCase() === "span") {
+      clickTarget = clickTarget.parentNode;
+      FontDragAndDrop.updateActiveFont(clickTarget);
+    }
+  };
+  FontDragAndDrop.updateActiveFont = function (target) {
+    var getFontFamily = target.title,
+      dropListItem = dropListing.getElementsByTagName("li");
+    displayContainer.style.fontFamily = getFontFamily;
+    for (var i = 0, len = dropListItem.length; i < len; i++) {
+      dropListItem[i].className = "";
+    }
+    target.className = "active";
+  };
+
+  FontDragAndDrop.preventActions = function (evt) {
+    if (evt.stopPropagation && evt.preventDefault) {
+      evt.stopPropagation();
+      evt.preventDefault();
+    } else {
+      evt.cancelBubble = true;
+      evt.returnValue = false;
+    }
+  };
+
+  window.addEventListener("load", FontDragAndDrop.setup, false);
 })();
 
 var otf = document.querySelector("#otfeatures");
 var cta = document.querySelector("#extended");
 var exit = document.querySelector("#exit");
 
-console.log(otf);
-
 cta.addEventListener("click", (event) => {
-	otf.classList.toggle("active");
+  otf.classList.toggle("active");
 });
 
 exit.addEventListener("click", (event) => {
-	otf.classList.remove("active");
+  otf.classList.remove("active");
 });

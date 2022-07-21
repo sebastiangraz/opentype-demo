@@ -1,504 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<title>Hacker Lyfe</title>
-		<meta name="description" content="" />
-		<link rel="stylesheet" href="style.css" />
-	</head>
-	<body>
-		<div class="grid">
-			<header>
-				<div class="button round">
-					<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12">
-						<path
-							d="M 1 0 L 11 0 C 11.552 0 12 0.448 12 1 C 12 1.552 11.552 2 11 2 L 1 2 C 0.448 2 0 1.552 0 1 C 0 0.448 0.448 0 1 0 Z M 1 5 L 11 5 C 11.552 5 12 5.448 12 6 C 12 6.552 11.552 7 11 7 L 1 7 C 0.448 7 0 6.552 0 6 C 0 5.448 0.448 5 1 5 Z M 1 10 L 11 10 C 11.552 10 12 10.448 12 11 C 12 11.552 11.552 12 11 12 L 1 12 C 0.448 12 0 11.552 0 11 C 0 10.448 0.448 10 1 10 Z"
-							fill="#fff"
-						></path>
-					</svg>
-				</div>
-			</header>
+  <head>
+    <meta charset="utf-8" />
+    <title>Hacker Lyfe</title>
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="grid">
+      <header>
+        <div class="button round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12">
+            <path
+              d="M 1 0 L 11 0 C 11.552 0 12 0.448 12 1 C 12 1.552 11.552 2 11 2 L 1 2 C 0.448 2 0 1.552 0 1 C 0 0.448 0.448 0 1 0 Z M 1 5 L 11 5 C 11.552 5 12 5.448 12 6 C 12 6.552 11.552 7 11 7 L 1 7 C 0.448 7 0 6.552 0 6 C 0 5.448 0.448 5 1 5 Z M 1 10 L 11 10 C 11.552 10 12 10.448 12 11 C 12 11.552 11.552 12 11 12 L 1 12 C 0.448 12 0 11.552 0 11 C 0 10.448 0.448 10 1 10 Z"
+              fill="#fff"
+            ></path>
+          </svg>
+        </div>
+      </header>
 
-			<aside class="sidebar-left">
-				<section style="height: 100%; padding: 1rem; overflow: hidden;">
-					<ul id="fonts"></ul>
-				</section>
-			</aside>
-			<article id="canvas" class="container">
-				<div class="textbox draggable" contenteditable="true">
-					ATAVA koffie influence —> 2nd street Rose
-				</div>
-				<div class="textbox draggable" contenteditable="true">
-					abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890
-					@&!?#$€%
-				</div>
-				<div class="textbox draggable" contenteditable="true">
-					abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890
-					@&!?#$€%
-				</div>
-			</article>
-			<div id="otfeatures">
-				<div
-					style="
-						display: flex;
-						justify-content: space-between;
-						align-items: center;
-					"
-				>
-					<span style="display: block; color: #fff;">Extended options</span>
-					<span id="exit" style="font-size: 16px;">×</span>
-				</div>
-				<hr />
-				<div class="feature">
-					<input type="checkbox" id="liga" onchange="refreshFeatures()" />
-					<label for="liga">Standard Ligatures</label>
-				</div>
-				<div class="feature">
-					<input type="checkbox" id="calt" onchange="refreshFeatures()" />
-					<label for="calt">Contextual Alternates</label>
-				</div>
-				<div class="feature">
-					<input type="checkbox" id="dlig" onchange="refreshFeatures()" />
-					<label for="dlig">Discretionary Ligatures</label>
-				</div>
-				<div class="feature">
-					<input type="checkbox" id="swsh" onchange="refreshFeatures()" /><label
-						for="swsh"
-						>Swashes</label
-					>
-				</div>
-				<div class="feature">
-					<input type="checkbox" id="salt" onchange="refreshFeatures()" />
-					<label for="salt">Stylistic Alternates</label>
-				</div>
-				<div class="feature">
-					<input type="checkbox" id="case" onchange="refreshFeatures()" />
-					<label for="case">Case Sensitive Forms</label>
-				</div>
-				<hr />
-				<div class="setting-row">
-					<span>Small Caps</span>
-					<div class="radio-toolbar">
-						<input
-							type="radio"
-							name="smcp"
-							checked=""
-							id="off"
-							onchange="refreshFeatures()"
-						/>
-						<label for="off">Off</label>
+      <aside class="sidebar-left">
+        <section style="height: 100%; padding: 1rem; overflow: hidden">
+          <ul id="fonts"></ul>
+        </section>
+      </aside>
+      <article id="canvas" class="container">
+        <div class="textbox draggable" contenteditable="true">
+          ATAVA koffie influence —> 2nd street Rose
+        </div>
+        <div class="textbox draggable" contenteditable="true">
+          abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890
+          @&!?#$€%
+        </div>
+        <div class="textbox draggable" contenteditable="true">
+          abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890
+          @&!?#$€%^
+        </div>
+      </article>
+      <div id="otfeatures">
+        <div class="otfheader">
+          <span style="display: block; color: #fff">Extended options</span>
+          <span id="exit" style="font-size: 16px">×</span>
+        </div>
+        <hr />
+        <div class="feature">
+          <input type="checkbox" id="liga" onchange="refreshFeatures()" />
+          <label for="liga">Standard Ligatures</label>
+        </div>
+        <div class="feature">
+          <input type="checkbox" id="calt" onchange="refreshFeatures()" />
+          <label for="calt">Contextual Alternates</label>
+        </div>
+        <div class="feature">
+          <input type="checkbox" id="dlig" onchange="refreshFeatures()" />
+          <label for="dlig">Discretionary Ligatures</label>
+        </div>
+        <div class="feature">
+          <input type="checkbox" id="swsh" onchange="refreshFeatures()" /><label
+            for="swsh"
+            >Swashes</label
+          >
+        </div>
+        <div class="feature">
+          <input type="checkbox" id="salt" onchange="refreshFeatures()" />
+          <label for="salt">Stylistic Alternates</label>
+        </div>
+        <div class="feature">
+          <input type="checkbox" id="case" onchange="refreshFeatures()" />
+          <label for="case">Case Sensitive Forms</label>
+        </div>
+        <hr />
+        <div class="setting-row">
+          <span>Small Caps</span>
+          <div class="radio-toolbar">
+            <input
+              type="radio"
+              name="smcp"
+              checked=""
+              id="off"
+              onchange="refreshFeatures()"
+            />
+            <label for="off">Off</label>
 
-						<input
-							type="radio"
-							id="fake-smcp"
-							name="smcp"
-							onchange="refreshFeatures()"
-						/>
-						<label for="fake-smcp">Fake</label>
+            <input
+              type="radio"
+              id="fake-smcp"
+              name="smcp"
+              onchange="refreshFeatures()"
+            />
+            <label for="fake-smcp">Fake</label>
 
-						<input
-							type="radio"
-							id="c2sc"
-							name="smcp"
-							onchange="refreshFeatures()"
-						/>
-						<label for="c2sc">Real</label>
-					</div>
-				</div>
+            <input
+              type="radio"
+              id="c2sc"
+              name="smcp"
+              onchange="refreshFeatures()"
+            />
+            <label for="c2sc">Real</label>
+          </div>
+        </div>
 
-				<div class="setting-row">
-					<span>Figures</span>
-					<div class="radio-toolbar">
-						<input
-							type="radio"
-							id="lnum"
-							name="numsty"
-							onchange="refreshFeatures()"
-						/>
-						<label for="lnum">Default</label>
+        <div class="setting-row">
+          <span>Figures</span>
+          <div class="radio-toolbar">
+            <input
+              type="radio"
+              id="lnum"
+              name="numsty"
+              onchange="refreshFeatures()"
+            />
+            <label for="lnum">Default</label>
 
-						<input
-							type="radio"
-							id="onum"
-							name="numsty"
-							onchange="refreshFeatures()"
-						/>
-						<label for="onum">Oldstyle</label>
-					</div>
-				</div>
+            <input
+              type="radio"
+              id="onum"
+              name="numsty"
+              onchange="refreshFeatures()"
+            />
+            <label for="onum">Oldstyle</label>
+          </div>
+        </div>
 
-				<div class="setting-row">
-					<span>Uniform</span>
-					<div class="radio-toolbar">
-						<input
-							type="radio"
-							id="pnum"
-							name="numspc"
-							onchange="refreshFeatures()"
-						/>
-						<label for="pnum">Proportional</label>
+        <div class="setting-row">
+          <span>Uniform</span>
+          <div class="radio-toolbar">
+            <input
+              type="radio"
+              id="pnum"
+              name="numspc"
+              onchange="refreshFeatures()"
+            />
+            <label for="pnum">Proportional</label>
 
-						<input
-							type="radio"
-							id="tnum"
-							name="numspc"
-							onchange="refreshFeatures()"
-						/>
-						<label for="tnum">Tabular</label>
-					</div>
-				</div>
-				<hr />
-				<span style="margin-bottom: 12px; display: block; color: #fff;"
-					>Numerical</span
-				>
-				<div class="feature">
-					<input type="checkbox" id="zero" onchange="refreshFeatures()" />
-					<label for="zero">Slashed zero</label>
-				</div>
-				<div class="feature">
-					<input
-						type="checkbox"
-						id="frac"
-						name="frac"
-						onchange="refreshFeatures()"
-					/>
-					<label for="frac">Fractions</label>
-				</div>
+            <input
+              type="radio"
+              id="tnum"
+              name="numspc"
+              onchange="refreshFeatures()"
+            />
+            <label for="tnum">Tabular</label>
+          </div>
+        </div>
+        <hr />
+        <span style="margin-bottom: 12px; display: block; color: #fff"
+          >Numerical</span
+        >
+        <div class="feature">
+          <input type="checkbox" id="zero" onchange="refreshFeatures()" />
+          <label for="zero">Slashed zero</label>
+        </div>
+        <div class="feature">
+          <input
+            type="checkbox"
+            id="frac"
+            name="frac"
+            onchange="refreshFeatures()"
+          />
+          <label for="frac">Fractions</label>
+        </div>
 
-				<div class="feature">
-					<input type="checkbox" id="sups" onchange="refreshFeatures()" />
-					<label for="sups">Superiors</label>
-				</div>
-				<div class="feature">
-					<input type="checkbox" id="numr" onchange="refreshFeatures()" />
-					<label for="numr">Numerator</label>
-				</div>
-				<div class="feature">
-					<input type="checkbox" id="dnom" onchange="refreshFeatures()" />
-					<label for="dnom">Denominator</label>
-				</div>
-				<div class="feature">
-					<input type="checkbox" id="sinf" onchange="refreshFeatures()" />
-					<label for="sinf">Inferiors</label>
-				</div>
+        <div class="feature">
+          <input type="checkbox" id="sups" onchange="refreshFeatures()" />
+          <label for="sups">Superiors</label>
+        </div>
+        <div class="feature">
+          <input type="checkbox" id="numr" onchange="refreshFeatures()" />
+          <label for="numr">Numerator</label>
+        </div>
+        <div class="feature">
+          <input type="checkbox" id="dnom" onchange="refreshFeatures()" />
+          <label for="dnom">Denominator</label>
+        </div>
+        <div class="feature">
+          <input type="checkbox" id="sinf" onchange="refreshFeatures()" />
+          <label for="sinf">Inferiors</label>
+        </div>
 
-				<hr />
-				<span style="margin-bottom: 12px; display: block; color: #fff;"
-					>Custom Features</span
-				>
-				<div class="feature ssxx">
-					<input type="checkbox" id="ss01" onchange="refreshFeatures()" /><label
-						for="ss01"
-						>ss01</label
-					>
-					<input type="checkbox" id="ss02" onchange="refreshFeatures()" /><label
-						for="ss02"
-						>ss02</label
-					>
-					<input type="checkbox" id="ss03" onchange="refreshFeatures()" /><label
-						for="ss03"
-						>ss03</label
-					>
-					<input type="checkbox" id="ss04" onchange="refreshFeatures()" /><label
-						for="ss04"
-						>ss04</label
-					>
-					<input type="checkbox" id="ss05" onchange="refreshFeatures()" /><label
-						for="ss05"
-						>ss05</label
-					>
-					<input type="checkbox" id="ss06" onchange="refreshFeatures()" /><label
-						for="ss06"
-						>ss06</label
-					>
-					<input type="checkbox" id="ss07" onchange="refreshFeatures()" /><label
-						for="ss07"
-						>ss07</label
-					>
-					<input type="checkbox" id="ss08" onchange="refreshFeatures()" /><label
-						for="ss08"
-						>ss08</label
-					>
-					<input type="checkbox" id="ss09" onchange="refreshFeatures()" /><label
-						for="ss09"
-						>ss09</label
-					>
-					<input type="checkbox" id="ss10" onchange="refreshFeatures()" /><label
-						for="ss10"
-						>ss10</label
-					>
-					<input type="checkbox" id="ss11" onchange="refreshFeatures()" /><label
-						for="ss11"
-						>ss11</label
-					>
-					<input type="checkbox" id="ss12" onchange="refreshFeatures()" /><label
-						for="ss12"
-						>ss12</label
-					>
-					<input type="checkbox" id="ss13" onchange="refreshFeatures()" /><label
-						for="ss13"
-						>ss13</label
-					>
-					<input type="checkbox" id="ss14" onchange="refreshFeatures()" /><label
-						for="ss14"
-						>ss14</label
-					>
-					<input type="checkbox" id="ss15" onchange="refreshFeatures()" /><label
-						for="ss15"
-						>ss15</label
-					>
-					<input type="checkbox" id="ss16" onchange="refreshFeatures()" /><label
-						for="ss16"
-						>ss16</label
-					>
-					<input type="checkbox" id="ss17" onchange="refreshFeatures()" /><label
-						for="ss17"
-						>ss17</label
-					>
-					<input type="checkbox" id="ss18" onchange="refreshFeatures()" /><label
-						for="ss18"
-						>ss18</label
-					>
-					<input type="checkbox" id="ss19" onchange="refreshFeatures()" /><label
-						for="ss19"
-						>ss19</label
-					>
-					<input type="checkbox" id="ss20" onchange="refreshFeatures()" /><label
-						for="ss20"
-						>ss20</label
-					>
-				</div>
-				<hr />
-				<span style="margin-bottom: 12px; display: block; color: #fff;"
-					>Variable Settings</span
-				>
-				<div class="controls">
-					<!-- Weight Controls -->
-					<div class="slider-container">
-						<div class="slider-controls">
-							<label for="text-weight" class="slider-label">
-								<span class="slider-name">Weight:</span>
-								<span class="output" data-index="0"></span>
-							</label>
-						</div>
-						<input
-							type="range"
-							min="100"
-							max="900"
-							value="500"
-							class="slider"
-							id="text-weight"
-							name="text-weight"
-							data-index="0"
-						/>
-					</div>
-					<!-- Width Controls -->
-					<div class="slider-container">
-						<div class="slider-controls">
-							<label for="text-width" class="slider-label">
-								<span class="slider-name">Width:</span>
-								<span class="output" data-index="1"></span>
-							</label>
-						</div>
-						<input
-							type="range"
-							min="1"
-							max="9"
-							value="1"
-							class="slider"
-							id="text-width"
-							name="text-width"
-							data-index="1"
-						/>
-					</div>
-					<!-- Slant Controls -->
-					<div class="slider-container">
-						<div class="slider-controls">
-							<label for="text-slant" class="slider-label">
-								<span class="slider-name">Slant:</span>
-								<span class="output" data-index="2"></span>
-							</label>
-						</div>
-						<input
-							type="range"
-							min="0"
-							max="12"
-							value="0"
-							class="slider"
-							id="text-slant"
-							name="text-slant"
-							data-index="2"
-						/>
-					</div>
-					<div class="slider-container">
-						<div class="slider-controls">
-							<label for="text-chonk" class="slider-label">
-								<span class="slider-name">Chonk:</span>
-								<span class="output" data-index="3"></span>
-							</label>
-						</div>
-						<input
-							type="range"
-							min="100"
-							max="900"
-							value="100"
-							class="slider"
-							id="text-chonk"
-							name="text-chonk"
-							data-index="3"
-						/>
-					</div>
-				</div>
-			</div>
-			<aside class="sidebar-right">
-				<div id="text-properties">
-					<div style="height: 16px;"></div>
-					<hr style="margin-bottom: 40px;" />
-					<div class="setting-row">
-						<div class="inactive-row"></div>
-						<div class="inactive-row" style="height: 26px;"></div>
-						<div class="inactive-row" style="height: 26px;"></div>
-					</div>
-					<div class="setting-row">
-						<div class="inactive-row"></div>
-						<div class="inactive-row" style="height: 26px;"></div>
-						<div class="inactive-row" style="height: 26px;"></div>
-					</div>
-					<div class="setting-row">
-						<div class="inactive-row"></div>
-						<div class="inactive-row" style="height: 26px;"></div>
-						<div class="inactive-row" style="height: 26px;"></div>
-					</div>
-					<div class="setting-row">
-						<div class="inactive-row" style="max-width: 86px;"></div>
-						<div class="inactive-row" style="height: 26px;"></div>
-					</div>
-					<div class="setting-row">
-						<div class="inactive-row" style="height: 0; max-width: 86px;"></div>
-						<div class="inactive-row" style="height: 26px;"></div>
-					</div>
-					<div class="setting-row">
-						<div class="inactive-row"></div>
-						<div class="inactive-row" style="height: 26px;"></div>
-						<div class="inactive-row"></div>
-					</div>
-					<div class="setting-row">
-						<div class="inactive-row"></div>
-						<div class="inactive-row" style="height: 26px;"></div>
-						<div class="inactive-row"></div>
-					</div>
-					<hr style="margin-bottom: 40px;" />
-					<div class="setting-row">
-						<div class="inactive-row" style="height: 26px;"></div>
-						<div class="inactive-row" style="height: 26px;"></div>
-						<div class="inactive-row"></div>
-					</div>
-					<hr />
-					<span style="margin-bottom: 12px; display: block; color: #fff;"
-						>Text</span
-					>
-					<div class="setting-row">
-						<span style="min-width: 86px;">Typeface</span>
-						<div class="inactive-row active-row" style="height: 26px;"></div>
-					</div>
-					<div class="setting-row">
-						<span style="min-width: 86px;">Style</span>
-						<div class="inactive-row active-row" style="height: 26px;"></div>
-					</div>
-					<div class="setting-row">
-						<span style="min-width: 86px;">Size</span>
-						<div class="inactive-row active-row" style="height: 26px;"></div>
-						<div class="inactive-row active-row"></div>
-					</div>
-					<div class="setting-row">
-						<span style="min-width: 86px;">Spacing</span>
-						<div class="inactive-row active-row" style="height: 26px;"></div>
-						<div class="inactive-row active-row" style="height: 26px;"></div>
-					</div>
-					<div class="setting-row">
-						<span style="min-width: 86px;">Align</span>
-						<div class="inactive-row active-row" style="height: 26px;"></div>
-					</div>
-					<div class="setting-row">
-						<span style="min-width: 86px;"></span>
-						<div
-							tabindex="0"
-							id="extended"
-							class="inactive-row active-row"
-							style="height: 26px;"
-						>
-							Extended options
-						</div>
-					</div>
-					<hr />
-				</div>
-			</aside>
-		</div>
-	</body>
-	<script>
-		document.write(
-			'<script src="http://' +
-				(location.host || "localhost").split(":")[0] +
-				':35729/livereload.js"></' +
-				"script>"
-		);
-	</script>
-	<script src="main.js"></script>
-	<script src="otf.js"></script>
-	<script src="variable.js"></script>
-	<script type="module">
-		import interact from "https://cdn.interactjs.io/v1.9.19/interactjs/index.js";
+        <hr />
+        <span style="margin-bottom: 12px; display: block; color: #fff"
+          >Custom Features</span
+        >
+        <div class="feature ssxx">
+          <input type="checkbox" id="ss01" onchange="refreshFeatures()" /><label
+            for="ss01"
+            >ss01</label
+          >
+          <input type="checkbox" id="ss02" onchange="refreshFeatures()" /><label
+            for="ss02"
+            >ss02</label
+          >
+          <input type="checkbox" id="ss03" onchange="refreshFeatures()" /><label
+            for="ss03"
+            >ss03</label
+          >
+          <input type="checkbox" id="ss04" onchange="refreshFeatures()" /><label
+            for="ss04"
+            >ss04</label
+          >
+          <input type="checkbox" id="ss05" onchange="refreshFeatures()" /><label
+            for="ss05"
+            >ss05</label
+          >
+          <input type="checkbox" id="ss06" onchange="refreshFeatures()" /><label
+            for="ss06"
+            >ss06</label
+          >
+          <input type="checkbox" id="ss07" onchange="refreshFeatures()" /><label
+            for="ss07"
+            >ss07</label
+          >
+          <input type="checkbox" id="ss08" onchange="refreshFeatures()" /><label
+            for="ss08"
+            >ss08</label
+          >
+          <input type="checkbox" id="ss09" onchange="refreshFeatures()" /><label
+            for="ss09"
+            >ss09</label
+          >
+          <input type="checkbox" id="ss10" onchange="refreshFeatures()" /><label
+            for="ss10"
+            >ss10</label
+          >
+          <input type="checkbox" id="ss11" onchange="refreshFeatures()" /><label
+            for="ss11"
+            >ss11</label
+          >
+          <input type="checkbox" id="ss12" onchange="refreshFeatures()" /><label
+            for="ss12"
+            >ss12</label
+          >
+          <input type="checkbox" id="ss13" onchange="refreshFeatures()" /><label
+            for="ss13"
+            >ss13</label
+          >
+          <input type="checkbox" id="ss14" onchange="refreshFeatures()" /><label
+            for="ss14"
+            >ss14</label
+          >
+          <input type="checkbox" id="ss15" onchange="refreshFeatures()" /><label
+            for="ss15"
+            >ss15</label
+          >
+          <input type="checkbox" id="ss16" onchange="refreshFeatures()" /><label
+            for="ss16"
+            >ss16</label
+          >
+          <input type="checkbox" id="ss17" onchange="refreshFeatures()" /><label
+            for="ss17"
+            >ss17</label
+          >
+          <input type="checkbox" id="ss18" onchange="refreshFeatures()" /><label
+            for="ss18"
+            >ss18</label
+          >
+          <input type="checkbox" id="ss19" onchange="refreshFeatures()" /><label
+            for="ss19"
+            >ss19</label
+          >
+          <input type="checkbox" id="ss20" onchange="refreshFeatures()" /><label
+            for="ss20"
+            >ss20</label
+          >
+        </div>
+        <hr />
+        <span style="margin-bottom: 12px; display: block; color: #fff"
+          >Variable Settings</span
+        >
+        <div class="controls">
+          <!-- Weight Controls -->
+          <div class="slider-container">
+            <div class="slider-controls">
+              <label for="text-weight" class="slider-label">
+                <span class="slider-name">Weight:</span>
+                <span class="output" data-index="0"></span>
+              </label>
+            </div>
+            <input
+              type="range"
+              min="0"
+              max="900"
+              value="0"
+              class="slider"
+              id="text-weight"
+              name="text-weight"
+              data-index="0"
+            />
+          </div>
+          <!-- Width Controls -->
+          <div class="slider-container">
+            <div class="slider-controls">
+              <label for="text-width" class="slider-label">
+                <span class="slider-name">Width:</span>
+                <span class="output" data-index="1"></span>
+              </label>
+            </div>
+            <input
+              type="range"
+              min="1"
+              max="9"
+              value="1"
+              class="slider"
+              id="text-width"
+              name="text-width"
+              data-index="1"
+            />
+          </div>
+          <!-- Slant Controls -->
+          <div class="slider-container">
+            <div class="slider-controls">
+              <label for="text-slant" class="slider-label">
+                <span class="slider-name">Slant:</span>
+                <span class="output" data-index="2"></span>
+              </label>
+            </div>
+            <input
+              type="range"
+              min="0"
+              max="12"
+              value="0"
+              class="slider"
+              id="text-slant"
+              name="text-slant"
+              data-index="2"
+            />
+          </div>
+          <div class="slider-container">
+            <div class="slider-controls">
+              <label for="text-chonk" class="slider-label">
+                <span class="slider-name">Chonk:</span>
+                <span class="output" data-index="3"></span>
+              </label>
+            </div>
+            <input
+              type="range"
+              min="100"
+              max="900"
+              value="100"
+              class="slider"
+              id="text-chonk"
+              name="text-chonk"
+              data-index="3"
+            />
+          </div>
+        </div>
+      </div>
+      <aside class="sidebar-right">
+        <div id="text-properties">
+          <div style="height: 16px"></div>
+          <hr style="margin-bottom: 40px" />
+          <div class="setting-row">
+            <div class="inactive-row"></div>
+            <div class="inactive-row" style="height: 26px"></div>
+            <div class="inactive-row" style="height: 26px"></div>
+          </div>
+          <div class="setting-row">
+            <div class="inactive-row"></div>
+            <div class="inactive-row" style="height: 26px"></div>
+            <div class="inactive-row" style="height: 26px"></div>
+          </div>
+          <div class="setting-row">
+            <div class="inactive-row"></div>
+            <div class="inactive-row" style="height: 26px"></div>
+            <div class="inactive-row" style="height: 26px"></div>
+          </div>
+          <div class="setting-row">
+            <div class="inactive-row" style="max-width: 86px"></div>
+            <div class="inactive-row" style="height: 26px"></div>
+          </div>
+          <div class="setting-row">
+            <div class="inactive-row" style="height: 0; max-width: 86px"></div>
+            <div class="inactive-row" style="height: 26px"></div>
+          </div>
+          <div class="setting-row">
+            <div class="inactive-row"></div>
+            <div class="inactive-row" style="height: 26px"></div>
+            <div class="inactive-row"></div>
+          </div>
+          <div class="setting-row">
+            <div class="inactive-row"></div>
+            <div class="inactive-row" style="height: 26px"></div>
+            <div class="inactive-row"></div>
+          </div>
+          <hr style="margin-bottom: 40px" />
+          <div class="setting-row">
+            <div class="inactive-row" style="height: 26px"></div>
+            <div class="inactive-row" style="height: 26px"></div>
+            <div class="inactive-row"></div>
+          </div>
+          <hr />
+          <span style="margin-bottom: 12px; display: block; color: #fff"
+            >Text</span
+          >
+          <div class="setting-row">
+            <span style="min-width: 86px">Typeface</span>
+            <div class="inactive-row active-row" style="height: 26px"></div>
+          </div>
+          <div class="setting-row">
+            <span style="min-width: 86px">Style</span>
+            <div class="inactive-row active-row" style="height: 26px"></div>
+          </div>
+          <div class="setting-row">
+            <span style="min-width: 86px">Size</span>
+            <div class="inactive-row active-row" style="height: 26px"></div>
+            <div class="inactive-row active-row"></div>
+          </div>
+          <div class="setting-row">
+            <span style="min-width: 86px">Spacing</span>
+            <div class="inactive-row active-row" style="height: 26px"></div>
+            <div class="inactive-row active-row" style="height: 26px"></div>
+          </div>
+          <div class="setting-row">
+            <span style="min-width: 86px">Align</span>
+            <div class="inactive-row active-row" style="height: 26px"></div>
+          </div>
+          <div class="setting-row">
+            <span style="min-width: 86px"></span>
+            <div
+              tabindex="0"
+              id="extended"
+              class="inactive-row active-row"
+              style="height: 26px"
+            >
+              Extended options
+            </div>
+          </div>
+          <hr />
+        </div>
+      </aside>
+    </div>
+  </body>
+  <script>
+    document.write(
+      '<script src="http://' +
+        (location.host || "localhost").split(":")[0] +
+        ':35729/livereload.js?snipver=1"></' +
+        "script>"
+    );
+  </script>
+  <script src="main.js"></script>
+  <script src="otf.js"></script>
+  <script src="variable.js"></script>
+  <script src="opentype-plugin.js"></script>
+  <script src="variable-font.js"></script>
+  <script type="module">
+    import interact from "https://cdn.interactjs.io/v1.9.19/interactjs/index.js";
 
-		interact(".draggable").draggable({
-			// enable inertial throwing
-			inertia: true,
-			// keep the element within the area of it's parent
-			modifiers: [
-				interact.modifiers.restrictRect({
-					restriction: "parent",
-					endOnly: true,
-				}),
-			],
-			// enable autoScroll
-			autoScroll: true,
+    interact(".draggable").draggable({
+      // enable inertial throwing
+      inertia: true,
+      // keep the element within the area of it's parent
+      modifiers: [
+        interact.modifiers.restrictRect({
+          restriction: "parent",
+          endOnly: true,
+        }),
+      ],
+      // enable autoScroll
+      autoScroll: true,
 
-			listeners: {
-				// call this function on every dragmove event
-				move: dragMoveListener,
+      listeners: {
+        // call this function on every dragmove event
+        move: dragMoveListener,
 
-				// call this function on every dragend event
-				end(event) {
-					var textEl = event.target.querySelector("p");
+        // call this function on every dragend event
+        end(event) {
+          var textEl = event.target.querySelector("p");
 
-					textEl &&
-						(textEl.textContent =
-							"moved a distance of " +
-							Math.sqrt(
-								(Math.pow(event.pageX - event.x0, 2) +
-									Math.pow(event.pageY - event.y0, 2)) |
-									0
-							).toFixed(2) +
-							"px");
-				},
-			},
-		});
+          textEl &&
+            (textEl.textContent =
+              "moved a distance of " +
+              Math.sqrt(
+                (Math.pow(event.pageX - event.x0, 2) +
+                  Math.pow(event.pageY - event.y0, 2)) |
+                  0
+              ).toFixed(2) +
+              "px");
+        },
+      },
+    });
 
-		function dragMoveListener(event) {
-			var target = event.target;
-			// keep the dragged position in the data-x/data-y attributes
-			var x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
-			var y = (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
+    function dragMoveListener(event) {
+      var target = event.target;
+      // keep the dragged position in the data-x/data-y attributes
+      var x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
+      var y = (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
 
-			// translate the element
-			target.style.webkitTransform = target.style.transform =
-				"translate(" + x + "px, " + y + "px)";
+      // translate the element
+      target.style.webkitTransform = target.style.transform =
+        "translate(" + x + "px, " + y + "px)";
 
-			// update the posiion attributes
-			target.setAttribute("data-x", x);
-			target.setAttribute("data-y", y);
-		}
+      // update the posiion attributes
+      target.setAttribute("data-x", x);
+      target.setAttribute("data-y", y);
+    }
 
-		// this function is used later in the resizing and gesture demos
-		window.dragMoveListener = dragMoveListener;
-	</script>
+    // this function is used later in the resizing and gesture demos
+    window.dragMoveListener = dragMoveListener;
+  </script>
 </html>

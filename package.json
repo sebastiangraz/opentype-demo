@@ -6,6 +6,8 @@
 		"start": "concurrently --kill-others \"http-server .\" \"livereload .\""
 	},
 	"devDependencies": {
-		"concurrently": "^5.2.0"
+		"concurrently": "^5.2.0",
+		"http-server": "^14.1.1",
+		"livereload": "^0.9.3"
 	}
 }
