@@ -113,8 +113,8 @@ ul {
   margin-bottom: 80px;
   /* This makes things *much* easier */
   box-sizing: border-box;
-  font-variation-settings: "wght" var(--text-weight), "wdth" var(--text-width),
-    "slnt" var(--text-slant), "CHNK" var(--text-chonk);
+  /* font-variation-settings: "wght" var(--text-weight), "wdth" var(--text-width),
+    "slnt" var(--text-slant), "CHNK" var(--text-chonk); */
 }
 
 .textbox:focus:after {
@@ -308,8 +308,8 @@ body {
 }
 
 .demo-text {
-  font-variation-settings: "wght" var(--text-weight), "wdth" var(--text-width),
-    "slnt" var(--text-slant), "CHNK" var(--text-chonk);
+  /* font-variation-settings: "wght" var(--text-weight), "wdth" var(--text-width),
+    "slnt" var(--text-slant), "CHNK" var(--text-chonk); */
   margin: 0;
 }
 
@@ -335,7 +335,7 @@ body {
   align-items: center;
   font-style: normal;
   color: #fff;
-  font-variation-settings: "slnt" var(--text-slant);
+  /* font-variation-settings: "slnt" var(--text-slant); */
 }
 .slider-name {
   min-width: 48px;
@@ -348,7 +348,7 @@ body {
   margin: 0px 12px;
   min-width: 60px;
   border-radius: 5px;
-  font-variation-settings: "slnt" var(--text-slant);
+  /* font-variation-settings: "slnt" var(--text-slant); */
 }
 
 .slider {

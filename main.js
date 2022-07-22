@@ -1,5 +1,7 @@
 var FontDragAndDrop = FontDragAndDrop || {};
-
+var otf = document.querySelector("#otfeatures");
+var cta = document.querySelector("#extended");
+var exit = document.querySelector("#exit");
 (function () {
   var dropContainer,
     dropListing,
@@ -80,7 +82,7 @@ var FontDragAndDrop = FontDragAndDrop || {};
         var fontBuffer = event.target.result;
 
         var vf = new VariableFont(opentype.parse(fontBuffer));
-        console.log(event.target.result, vf);
+        onFontLoaded(vf, fontBuffer);
         FontDragAndDrop.buildFontListItem(event);
       } catch (e) {
         alert("Error: " + e);
@@ -98,6 +100,55 @@ var FontDragAndDrop = FontDragAndDrop || {};
     return c.join("");
   }
 
+  function onFontLoaded(varFont, fontBuffer) {
+    var currentSettings = [];
+    if (varFont.getAxesCount()) {
+      const controls = otf.querySelector(".controls");
+
+      varFont.tables.fvar.axes.map((e, i) => {
+        currentSettings.push("'" + e.tag + "' " + e.defaultValue.toString());
+
+        controls.innerHTML += `<div class="slider-container">
+        <div class="slider-controls">
+          <label for="text-weight" class="slider-label">
+            <span class="slider-name">${e.tag} </span>
+            <span class="output" data-index="${i}">${e.defaultValue}</span>
+          </label>
+        </div>
+        <input
+          type="range"
+          min="${e.minValue}"
+          max="${e.maxValue}"
+          value="${e.defaultValue}"
+          class="slider"
+          id="${e.tag}"
+          name="${e.tag}"
+          data-index="${i}"
+        />
+      </div>`;
+      });
+
+      document.querySelectorAll("input[type=range]").forEach((box) =>
+        box.addEventListener("input", (e) => {
+          console.log(e);
+          currentSettings = [];
+          for (var k = 0; k < varFont.getAxesCount(); k++) {
+            var axis = varFont.getAxis(k);
+            var element = document.getElementById(axis.tag.toString());
+            currentSettings.push(
+              "'" + axis.tag.toString() + "' " + element.value
+            );
+          }
+          const container = document.querySelector(".container");
+          console.log(currentSettings.join());
+          Object.assign(container.style, {
+            fontVariationSettings: `${currentSettings.join()}`,
+          });
+        })
+      );
+    }
+  }
+
   FontDragAndDrop.buildFontListItem = function (event) {
     domElements = [
       document.createElement("li"),
@@ -107,8 +158,7 @@ var FontDragAndDrop = FontDragAndDrop || {};
     var name = event.target.name,
       data = event.target.result;
 
-    var base64String = btoa(Uint8ToString(new Uint8Array(event.target.result)));
-    console.log(base64String);
+    var base64String = btoa(Uint8ToString(new Uint8Array(data)));
 
     // Get font file and prepend it to stylsheet using @font-face rule
     fontFaceStyle =
@@ -165,10 +215,6 @@ var FontDragAndDrop = FontDragAndDrop || {};
 
   window.addEventListener("load", FontDragAndDrop.setup, false);
 })();
-
-var otf = document.querySelector("#otfeatures");
-var cta = document.querySelector("#extended");
-var exit = document.querySelector("#exit");
 
 cta.addEventListener("click", (event) => {
   otf.classList.toggle("active");
